@@ -359,6 +359,50 @@ function initialize() {
     var row;
     var cell;
     var link;
+	bonuses.sort(function (a, b) {
+		return a.itemName.localeCompare(b.itemName);
+	});
+	mounts.sort(function (a, b) {
+		var ordera=0;
+		var orderb=0;
+		switch (a.quality) {
+			case 'legendary':
+				ordera=10000;
+				break;
+			case 'epic':
+				ordera=1000;
+				break;
+			case 'rare':
+				ordera=100;
+				break;
+			case 'uncommon':
+				ordera=10;
+				break;
+			case 'common':
+				ordera=1;
+				break;
+		}
+		switch (b.quality) {
+			case 'legendary':
+				orderb=10000;
+				break;
+			case 'epic':
+				orderb=1000;
+				break;
+			case 'rare':
+				orderb=100;
+				break;
+			case 'uncommon':
+				orderb=10;
+				break;
+			case 'common':
+				orderb=1;
+				break;
+		}
+		console.log(ordera-orderb);
+		return a.itemName.localeCompare(b.itemName)+orderb-ordera;
+		return a.itemName.localeCompare(b.itemName);
+	});
     while (i < bonuses.length) {
         row = table.insertRow(table.rows.length);
         cell = row.insertCell(0);
